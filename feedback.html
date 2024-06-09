@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Page</title>
+<link rel="stylesheet" href="feedback.css">
+<script src="https://kit.fontawesome.com/b77e449a9c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h2 class="logo">EcoVista</h2>
+        
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="environment.html">What is Environmental pollution ?</a>
+            <a href="solution.html">Solution and Tips</a>
+            <a href="news.html">NEWS</a>
+            <a href="feedback.html">Give Feedback</a>
+        </nav>
+    </header>
+    </header>
+    <div class="in_side">
+        <img src="photos/pexels-fotios-photos-2304253.jpg" alt="">
+    </div>
+
+    <div id="app">
+    <h1>Feedback</h1>
+    <!-- Feedback form -->
+    <div class="feedback">
+        <label for="text">Name: </label>
+        <input type="text" v-model="name" placeholder="Your Name">
+        <label for="textarea">Comment: </label>
+        <textarea v-model="comment" placeholder="Your Comment shortly....."></textarea>
+        <button @click="submitFeedback">Submit Feedback</button>
+    </div>
+    <!-- Display feedback -->
+    <ul class="feedback-list">
+        <li v-for="(feedback, index) in feedbacks" :key="index" class="feedback-item">
+        <strong>{{ feedback.name }}</strong>: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ feedback.comment }}
+        </li>
+    </ul>
+    </div>
+    <footer>
+        <div class="foot">
+            <p class="topic">Contact us</p>
+            <p>Call: (+94) 715764250</p>
+            <p>Email: <a href="sandunsameera250@gmail.com">sandunsameera250@gmail.com</a></p>
+            <p>Address:  Deniyaya Road,Kotapola, Srilanka.</p>
+            <a href="https://www.facebook.com/" target="_blank" class="link"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.whatsapp.com/" target="_blank" class="link"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"  class="link"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"class="link"><i class="fa-brands fa-linkedin"></i></i></a>
+        </div>
+    </footer>
+
+
+<!-- Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+        name: '',
+        comment: '',
+        feedbacks: []
+        },
+        methods: {
+        submitFeedback() {
+            if (this.name.trim() !== '' && this.comment.trim() !== '') {
+                this.feedbacks.push({ name: this.name, comment: this.comment });
+                this.name = '';
+                this.comment = '';
+            }
+        }
+    }
+    });
+</script>
+</body>
+</html>
